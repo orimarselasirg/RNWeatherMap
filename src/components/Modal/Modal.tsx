@@ -71,21 +71,21 @@ export const ModalComponent = ({
               source={{uri: `https://openweathermap.org/img/wn/${marker?.icon}@4x.png`}}
               width={30}
             />
-            <View style={{width: 200}}>
+            <View style={styles.rowContainer}>
               <View style={styles.rowInfo}>
-                <Text style={{width: 100, fontWeight: 'bold'}}>Temperatura:</Text>
+                <Text style={styles.rowData}>Temperatura:</Text>
                 <Text>{marker?.tempereture.toFixed(2)}</Text>
               </View>
               <View style={styles.rowInfo}>
-                <Text style={{width: 100, fontWeight: 'bold'}}>Latitud:</Text>
+                <Text style={styles.rowData}>Latitud:</Text>
                 <Text>{marker.latitude.toFixed(2)}</Text>
               </View>
               <View style={styles.rowInfo}>
-                <Text style={{width: 100, fontWeight: 'bold'}}>Longitud:</Text>
+                <Text style={styles.rowData}>Longitud:</Text>
                 <Text>{marker.longitude.toFixed(2)}</Text>
               </View>
               <View style={styles.rowInfo}>
-                <Text style={{width: 100, fontWeight: 'bold'}}>Descripción:</Text>
+                <Text style={styles.rowData}>Descripción:</Text>
                 <Text>{marker?.descrption}</Text>
                 
               </View>
@@ -179,7 +179,14 @@ const styles = StyleSheet.create({
     top             :10,
     width           :20,
   },
+  rowContainer:{
+    width:          200
+  },
   rowInfo: {
-    flexDirection   :'row',
+    flexDirection:  'row',
+  },
+  rowData: {
+    width:          100,
+    fontWeight:     'bold'
   }
 });

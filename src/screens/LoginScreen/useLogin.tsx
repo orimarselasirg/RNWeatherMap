@@ -1,11 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import { useAuth0 } from 'react-native-auth0';
-import { Location } from '../../interface/Location';
-import { closeSession, deleteTable, getUserSessionData, insertIntoSessionTable, markerTables, sessionTable } from '../../utils/sqlLite';
-import { requestPermissionLocation } from '../../utils/requestPermission';
-import { getLocation } from '../../utils/getLocation';
-import { User } from '../../service/entities/login.entities';
-import { Session } from '../../interface/Session';
+import { useEffect, useState }        from 'react'
+import { useAuth0 }                   from 'react-native-auth0';
+import { getLocation }                from '../../utils/getLocation';
+import { Location }                   from '../../interface/Location';
+import { requestPermissionLocation }  from '../../utils/requestPermission';
+import { Session }                    from '../../interface/Session';
+import { User }                       from '../../service/entities/login.entities';
+import {
+  closeSession,
+  getUserSessionData,
+  insertIntoSessionTable,
+  markerTables,
+  sessionTable,
+  deleteTable,
+} from '../../utils/sqlLite';
 
 export const useLogin = () => {
 
@@ -16,10 +23,14 @@ export const useLogin = () => {
     is_active:  0
   });
   const [location, setLocation] = useState<Location>({
-    latitude: 37,
+    latitude:   37,
     longitude: -122,
   })
-
+  
+  // useEffect(()=>{
+  //     deleteTable('sessionTable')
+  //   },[])
+  
   useEffect(()=>{
     sessionTable('sessionTable')
   },[])
@@ -46,9 +57,6 @@ export const useLogin = () => {
     getLocationFunction()
   },[])
 
-  // useEffect(()=>{
-  //     deleteTable('sessionTable')
-  //   },[])
 
   const getSessions = async () => {
     try {
@@ -70,9 +78,9 @@ export const useLogin = () => {
 
   const saveSessions = async (user: User) => {
     const values = {
-      username: user.givenName,
-      date: new Date().toDateString(),
-      active: 1
+      username: user?.givenName ?? 'username',
+      date:     new Date().toDateString(),
+      active:   1
     }
     try {
       await insertIntoSessionTable('sessionTable', values )

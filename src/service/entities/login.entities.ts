@@ -8,4 +8,5 @@ export interface User {
     email:        string;
     emailVerified:boolean;
     sub:          string;
+    is_active?:   number;
   }

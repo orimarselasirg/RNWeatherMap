@@ -1,7 +1,7 @@
+import { Location }         from "../../interface/Location";
+import { Markers }          from "../../interface/Markers";
 import { weatherApi }       from "../api/weatherApi";
 import { WeatherResponse }  from "../entities/weather.entities";
-import { Markers }          from "../../interface/Markers";
-import { Location }         from "../../interface/Location";
 
 export const getWeatherData = async ({latitude, longitude}: Location): Promise<Markers> => {
   try {

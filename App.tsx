@@ -1,12 +1,15 @@
-import React            from 'react';
-import { Auth0Provider} from 'react-native-auth0';
-import { LoginScreen }  from './src/screens/LoginScreen/LoginScreen';
+import React                          from 'react';
+import { Auth0Provider}               from 'react-native-auth0';
+import { LoginScreen }                from './src/screens/LoginScreen/LoginScreen';
+import { AUTH0_APIKEY, AUTH0_DOMAIN } from '@env';
+
+
 
 const App = () => {
   return (
     <Auth0Provider
-      domain=   {'dev-mz28f1dv.us.auth0.com'}
-      clientId= {'U7GI9aRHvUYX50Q8yhpRReTD8itVSOa5'}
+      domain=   {AUTH0_DOMAIN}
+      clientId= {AUTH0_APIKEY}
     >
       <LoginScreen/>
     </Auth0Provider>

@@ -5,8 +5,6 @@ import { Location } from "../interface/Location";
 export const getLocation = async():Promise<Location> => {
   return new Promise((resolve, reject) => {
     Geolocation.getCurrentPosition((data) => {
-
-      console.log({data});
       resolve({
         latitude: data.coords.latitude,
         longitude: data.coords.longitude

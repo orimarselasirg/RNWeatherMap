@@ -1,5 +1,6 @@
 import { openDatabase } from 'react-native-sqlite-storage'
 import { Markers } from '../interface/Markers';
+import { User } from '../service/entities/login.entities';
 
 const db = openDatabase(
   {
@@ -66,7 +67,7 @@ export const sessionTable = async(tableName: string) => {
 
 export const insertIntoTable = async(tableName: string, values: Markers) => {
   if (!db) {
-    console.error('Database is not initialized');
+    console.error('Database no inicializada');
     return;
   }
   try {
@@ -78,7 +79,7 @@ export const insertIntoTable = async(tableName: string, values: Markers) => {
           console.log('Results', results.rowsAffected);
         },
         error => {
-          console.log('Error inserting data: ', error);
+          console.log('Error al insertar en la tabla: ', error);
         }
       );
     });
@@ -89,7 +90,7 @@ export const insertIntoTable = async(tableName: string, values: Markers) => {
 
 export const insertIntoSessionTable = async(tableName: string, values: any) => {
   if (!db) {
-    console.error('Database is not initialized');
+    console.error('Database no inicializada');
     return;
   }
   try {
@@ -100,10 +101,10 @@ export const insertIntoSessionTable = async(tableName: string, values: any) => {
         `INSERT INTO ${tableName} (username, datetime, is_active) VALUES (?, ?, ?)`,
         [values.username, values.date, values.active],
         (tx, results) => {
-          console.log('Results', results);
+          console.log('Results', results.rowsAffected);
         },
         error => {
-          console.log('Error inserting data: ', error);
+          console.log('Error al insertar en la tabla: ', error);
         }
       );
     });
@@ -141,7 +142,7 @@ export const getMarkersData = async (tableName: string): Promise<Markers[]> => {
   });
 };
 
-export const getUserSessionData = async (tableName: string): Promise<any[]> => {
+export const getUserSessionData = async (tableName: string): Promise<User> => {
   return new Promise((resolve, reject) => {
     db.transaction(tx => {
       tx.executeSql(
@@ -155,12 +156,10 @@ export const getUserSessionData = async (tableName: string): Promise<any[]> => {
               let row: any = results.rows.item(i);
               data.push(row);
             }
-            console.log('sqlite ', data);
             const sessionActive = data.filter(e => e.is_active === 1)
             resolve(sessionActive[0]);
           } else {
             console.log('Registros no encontrados');
-            resolve([]);
           }
         },
         error => {
@@ -181,7 +180,7 @@ export const closeSession = async(id: number) => {
         console.log('Results', results.rowsAffected);
       },
       error => {
-        console.log('Error updating data: ', error);
+        console.log('Error al actualizar el registro: ', error);
       }
     );
   });
@@ -217,7 +216,7 @@ export const deleteMarker = (id: number, tableName: string): Promise<boolean> =>
           resolve(true)
         },
         error => {
-          console.log('Error deleting data: ', error);
+          console.log('Error al borrar el registro: ', error);
           reject(false)
         }
       )

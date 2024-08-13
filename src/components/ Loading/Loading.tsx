@@ -20,21 +20,20 @@ export const Loading = ({isLoading}: Props) => {
 
 const styles = StyleSheet.create({
   overlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Fondo semitransparente
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 100,
+    position:         'absolute',
+    top:              0,
+    left:             0,
+    right:            0,
+    bottom:           0,
+    backgroundColor:  'rgba(0, 0, 0, 0.5)',
+    justifyContent:   'center',
+    alignItems:       'center',
+    zIndex:           100,
   },
   loadingContainer: {
-    padding: 20,
-    // backgroundColor: 'white',
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
+    padding:          20,
+    borderRadius:     10,
+    justifyContent:   'center',
+    alignItems:       'center',
   },
 });

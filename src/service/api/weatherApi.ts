@@ -1,8 +1,11 @@
+import { APIKEY_WEATHER, BASE_URL } from "@env";
 import axios from "axios";
 
+console.log(BASE_URL);
+
 export const weatherApi = axios.create({
-  baseURL: 'https://api.openweathermap.org/data/2.5/weather',
+  baseURL: BASE_URL,
   params: {
-    'appid': "a359ec078e422aa46173f5c5a56ed96a"
+    'appid': APIKEY_WEATHER
   }
 })

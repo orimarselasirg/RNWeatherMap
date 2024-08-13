@@ -1,6 +1,6 @@
-import { useRef }                             from 'react'
-import MapView, {Marker, PROVIDER_GOOGLE}     from 'react-native-maps';
-import { ScrollView, Text, TouchableOpacity}  from 'react-native';
+import { useRef }                                         from 'react'
+import MapView, {Marker, PROVIDER_GOOGLE}                 from 'react-native-maps';
+import { ScrollView, StyleSheet, Text, TouchableOpacity}  from 'react-native';
 
 import { Markers }        from '../../interface/Markers';
 import { ModalComponent } from '../Modal/Modal';
@@ -79,10 +79,7 @@ const {
       <Loading isLoading={isLoading}/>
 
       <ScrollView
-        style={{
-          position: 'absolute',
-          height: 150
-        }}
+        style={styles.scrollViewContainer}
         persistentScrollbar
       >
         {
@@ -90,17 +87,9 @@ const {
             <TouchableOpacity
               key={index}
               onPress={()=>centerMap({latitude: marker.latitude, longitude: marker.longitude})}
-              style={{
-                width: 100,
-                height: 30,
-                backgroundColor:'#2196F3',
-                borderRadius: 3,
-                justifyContent: 'center',
-                alignItems: 'center',
-                marginVertical: 2
-              }}
+              style={styles.buttonMarker}
             >
-              <Text style={{color: 'white', fontWeight: 'bold'}}>
+              <Text style={styles.buttonText}>
                 Marcador - {index + 1}
               </Text>
             </TouchableOpacity>
@@ -117,3 +106,23 @@ const {
     </>
   )
 }
+
+const styles = StyleSheet.create({
+  scrollViewContainer:{
+    position:       'absolute',
+    height:         150
+  },
+  buttonMarker: {
+    width:            100,
+    height:           30,
+    backgroundColor:  '#2196F3',
+    borderRadius:     3,
+    justifyContent:   'center',
+    alignItems:       'center',
+    marginVertical:   2
+  },
+  buttonText:{
+    color:      'white',
+    fontWeight: 'bold'
+  }
+})
