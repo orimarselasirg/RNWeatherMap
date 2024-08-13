@@ -1,79 +1,85 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Bienvenido a la aplicación de The Weather Map App
 
-# Getting Started
+# iniciando proyecto
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+>**Nota importante**: Es importante que hayas configurado el ambiente de desarrollo, si no lo haz hecho puedes dirigirte aca [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup), encontraras las instrucciones para poder crear una nueva aplicacion paso a paso, antes de proceder.
 
-## Step 1: Start the Metro Server
+### Recomendaciones generales
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+-   Tener instalado una versino de node 18 o superior, se recomienda la la version 20.10.0, si no sabes la version puedes usar el siguiente comando en tu terminal```node -v```
+-   Tener instalado el JDK version 17 o superior y configurarlo en la variale de entorno JAVA_HOME
+-   Tener instalado el IDE Android Studio y configurar un emulador o bien conectar un equipo fisico el cual previamente debe estar habilitado en modo desarrollo
+-   Tener una cuenta y APIKEY de Auth0 para la gestion de autenticacion del usuario
+-   Tener una cuenta y APIKEY de la API de Google Map
+-   Tener una cuenta y APIKEY de la API de [OpenWeatherMap](https://openweathermap.org/api)
+-   Este proyecto se ha desarrollado enteramente para dispositivos Android
 
-To start Metro, run the following command from the _root_ of your React Native project:
+
+## Paso 1: Configurando las variables de entorno
+
+Este proyecto necesita de 4 variables de entorno, en la raiz del proyecto se encuentra el template del .env
+
+Variables:
+##
+```BASE_URL```       - Esta es la base de URL para la consulta de la api del clima
+##
+```APIKEY_WEATHER``` - Esta es la APIKEY del clima, la cual es necesaria para poder realizar las consultas
+##
+```AUTH0_DOMAIN```   - Este es el dominio que te otorga Auth0 para la gestión de la autenticacion
+##
+```AUTH0_APIKEY```   - Esta es la APIKEY que te otorga Auth0 para la gestión de la autenticacion
+
+
+## Paso 2: Iniciar el servidor de Metro
+
+Primero que todo deberas iniciar **Metro**, el empaquetador de javascript para React Native
+
+Para inicializar Metro, corre el siguiente comando en tu terminal estando unicado en la raiz de tu proyecto React Native
 
 ```bash
-# using npm
+# usando npm
 npm start
 
-# OR using Yarn
+# O usando Yarn
 yarn start
 ```
 
-## Step 2: Start your Application
+## Paso 3: Inicializa la aplicación
 
 Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
 
-### For Android
+### Para Android
 
 ```bash
-# using npm
+# usando npm
 npm run android
 
-# OR using Yarn
+# O usando Yarn
 yarn android
 ```
 
-### For iOS
+Si todo sale correcto y el ambiente de desarrollo esta debidamente configurado segun la documentacion de React Native, veras la aplicación correr en el emulador de android siempre que hayas configurado un emulador desde el IDE Android Studio
 
-```bash
-# using npm
-npm run ios
 
-# OR using Yarn
-yarn ios
-```
+Tambien puedes correr la app directamente desde el IDE de Android Studio
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+## Felicitaciones! :tada:
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+Has podido inicializar la app de The Weather Map App en React Native
 
-## Step 3: Modifying your App
+## Funcionalidades
 
-Now that you have successfully run the app, let's modify it.
+-   Gestión de usuario usando la API de Auth0
+-   Uso de SQLite para almacenar en el dispositivo los datos principales, como la seión del usuario y los marcadores del mapa
+-   Guarda un historial de las sesiones abiertas dentro de la Base de datos
+-   Uso de la API de Google Map
+-   interacción con el Mapa
+-   Guardar Marcadores, y al hacerlo se genera un icono con la temperatura que marca la ubicacion que hayas guardado
+-   Se abre un modal donde se podra ver información mas amplia y tener la opcion de Guardar en Base de datos o borrarla
+-   Solo persistiran los marcadores que se haya guardado en base de datos
+-   Se crea un listado de marcadores, los cuales al seleccionarlo se dirigira automaticamente al punto guardado
+-   Tiene Float Action Button para salir de sesión, y en base de datos la sesion queda guardada pero como no activa
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+## Equipo desarrollador
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Ramiro Grisales [Mi Perfil de Github](https://github.com/orimarselasirg)
