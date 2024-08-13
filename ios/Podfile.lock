@@ -1,4 +1,12 @@
 PODS:
+  - A0Auth0 (3.2.1):
+    - Auth0 (= 2.7.2)
+    - JWTDecode (= 3.1.0)
+    - React-Core
+    - SimpleKeychain (= 1.1.0)
+  - Auth0 (2.7.2):
+    - JWTDecode (~> 3.1)
+    - SimpleKeychain (~> 1.1)
   - boost (1.83.0)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.74.5)
@@ -7,6 +15,7 @@ PODS:
   - hermes-engine (0.74.5):
     - hermes-engine/Pre-built (= 0.74.5)
   - hermes-engine/Pre-built (0.74.5)
+  - JWTDecode (3.1.0)
   - RCT-Folly (2024.01.01.00):
     - boost
     - DoubleConversion
@@ -935,6 +944,31 @@ PODS:
   - React-Mapbuffer (0.74.5):
     - glog
     - React-debug
+  - react-native-geolocation (3.3.0):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
+  - react-native-maps (1.17.3):
+    - React-Core
+  - react-native-sqlite-storage (6.0.1):
+    - React-Core
   - React-nativeconfig (0.74.5)
   - React-NativeModulesApple (0.74.5):
     - glog
@@ -1164,10 +1198,14 @@ PODS:
     - React-logger (= 0.74.5)
     - React-perflogger (= 0.74.5)
     - React-utils (= 0.74.5)
+  - RNPermissions (4.1.5):
+    - React-Core
+  - SimpleKeychain (1.1.0)
   - SocketRocket (0.7.0)
   - Yoga (0.0.0)
 
 DEPENDENCIES:
+  - A0Auth0 (from `../node_modules/react-native-auth0`)
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
@@ -1200,6 +1238,9 @@ DEPENDENCIES:
   - React-jsitracing (from `../node_modules/react-native/ReactCommon/hermes/executor/`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
+  - "react-native-geolocation (from `../node_modules/@react-native-community/geolocation`)"
+  - react-native-maps (from `../node_modules/react-native-maps`)
+  - react-native-sqlite-storage (from `../node_modules/react-native-sqlite-storage`)
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -1223,13 +1264,19 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNPermissions (from `../node_modules/react-native-permissions`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
+    - Auth0
+    - JWTDecode
+    - SimpleKeychain
     - SocketRocket
 
 EXTERNAL SOURCES:
+  A0Auth0:
+    :path: "../node_modules/react-native-auth0"
   boost:
     :podspec: "../node_modules/react-native/third-party-podspecs/boost.podspec"
   DoubleConversion:
@@ -1291,6 +1338,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   React-Mapbuffer:
     :path: "../node_modules/react-native/ReactCommon"
+  react-native-geolocation:
+    :path: "../node_modules/@react-native-community/geolocation"
+  react-native-maps:
+    :path: "../node_modules/react-native-maps"
+  react-native-sqlite-storage:
+    :path: "../node_modules/react-native-sqlite-storage"
   React-nativeconfig:
     :path: "../node_modules/react-native/ReactCommon"
   React-NativeModulesApple:
@@ -1337,16 +1390,21 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/utils"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNPermissions:
+    :path: "../node_modules/react-native-permissions"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  A0Auth0: 47cb14c87d549b95b92242675ff2198ccd9dcbc5
+  Auth0: 28cb24cb19ebd51f0b07751f16d83b59f4019532
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
   DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
   FBLazyVector: ac12dc084d1c8ec4cc4d7b3cf1b0ebda6dab85af
   fmt: 4c2741a687cc09f0634a2e2c72a838b99f1ff120
   glog: fdfdfe5479092de0c4bdbebedd9056951f092c4f
   hermes-engine: 8c1577f3fdb849cbe7729c2e7b5abc4b845e88f8
+  JWTDecode: 3eaab1e06b6f4dcbdd6716aff09ba4c2104ca8b7
   RCT-Folly: 02617c592a293bd6d418e0a88ff4ee1f88329b47
   RCTDeprecation: 3afceddffa65aee666dafd6f0116f1d975db1584
   RCTRequired: ec1239bc9d8bf63e10fb92bd8b26171a9258e0c1
@@ -1371,6 +1429,9 @@ SPEC CHECKSUMS:
   React-jsitracing: 3b6060bbf5317663667e1dd93560c7943ab86ccc
   React-logger: 257858bd55f3a4e1bc0cf07ddc8fb9faba6f8c7c
   React-Mapbuffer: 6c1cacdbf40b531f549eba249e531a7d0bfd8e7f
+  react-native-geolocation: 5c5dd5de4571c55014e9e98214b273eed854f293
+  react-native-maps: 5d563f21238f8e8fea24ae6ff2772bfde17f6f34
+  react-native-sqlite-storage: f6d515e1c446d1e6d026aa5352908a25d4de3261
   React-nativeconfig: ba9a2e54e2f0882cf7882698825052793ed4c851
   React-NativeModulesApple: 8d11ff8955181540585c944cf48e9e7236952697
   React-perflogger: ed4e0c65781521e0424f2e5e40b40cc7879d737e
@@ -1394,8 +1455,10 @@ SPEC CHECKSUMS:
   React-runtimescheduler: cfbe85c3510c541ec6dc815c7729b41304b67961
   React-utils: f242eb7e7889419d979ca0e1c02ccc0ea6e43b29
   ReactCommon: f7da14a8827b72704169a48c929bcde802698361
+  RNPermissions: 294531ede5a64d1528463e88fffef05675842042
+  SimpleKeychain: f8707c8e97b38c6a6e687b17732afc9bcef06439
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
-  Yoga: 2246eea72aaf1b816a68a35e6e4b74563653ae09
+  Yoga: 950bbfd7e6f04790fdb51149ed51df41f329fcc8
 
 PODFILE CHECKSUM: 06a42524715b4c9860a9b26b64f0baa3c14247a0
 

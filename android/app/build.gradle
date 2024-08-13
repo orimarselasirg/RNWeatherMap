@@ -77,6 +77,7 @@ android {
     namespace "com.weatherapp"
     defaultConfig {
         applicationId "com.weatherapp"
+        manifestPlaceholders = [auth0Domain: "dev-mz28f1dv.us.auth0.com", auth0Scheme: "${applicationId}.auth0"]
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
